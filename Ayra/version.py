@@ -1,2 +1,2 @@
-__version__ = "7.2"
+__version__ = "7.3"
 ayra_version = "1.2.0"
