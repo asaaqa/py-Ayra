@@ -100,7 +100,8 @@ class _BaseDatabase:
 
 
 class MongoDB(_BaseDatabase):
-    def __init__(self, key, dbname="AyraDB"):
+    def __init__(self, key, user_id, dbname="AyraDB"):
+        self.user_id = user_id
         self.dB = MongoClient(key, serverSelectionTimeoutMS=5000)
         self.db = self.dB[dbname]
         super().__init__()
@@ -121,27 +122,30 @@ class MongoDB(_BaseDatabase):
             return True
 
     def keys(self):
-        return self.db.list_collection_names()
+        return self.db.list_collection_names(filter={"name": {"$regex": f"^{self.user_id}_"}})
 
     def set_key(self, key, value):
-        if key in self.keys():
-            self.db[key].replace_one({"_id": key}, {"value": str(value)})
+        if f"{self.user_id}_{key}" in self.keys():
+            self.db[f"{self.user_id}_{key}"].replace_one({"_id": f"{self.user_id}_{key}"}, {"value": str(value)})
         else:
-            self.db[key].insert_one({"_id": key, "value": str(value)})
-        self._cache.update({key: value})
+            self.db[f"{self.user_id}_{key}"].insert_one({"_id": f"{self.user_id}_{key}", "value": str(value)})
+        self._cache.update({f"{self.user_id}_{key}": value})
         return True
 
     def delete(self, key):
-        self.db.drop_collection(key)
+        self.db.drop_collection(f"{self.user_id}_{key}")
 
     def get(self, key):
-        if x := self.db[key].find_one({"_id": key}):
+        if x := self.db[f"{self.user_id}_{key}"].find_one({"_id": f"{self.user_id}_{key}"}):
             return x["value"]
 
     def flushall(self):
-        self.dB.drop_database("AyraDB")
+        self.db.list_collection_names(filter={"name": {"$regex": f"^{self.user_id}_"}})
+        for collection in collections:
+            self.db.drop_collection(collection)
         self._cache.clear()
         return True
+
 
 
 # --------------------------------------------------------------------------------------------- #
