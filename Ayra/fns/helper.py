@@ -20,14 +20,6 @@ from Ayra import run_as_module
 if run_as_module:
     from Ayra.configs import Var
     
-try:
-    from aiohttp import ClientSession as aiohttp_client
-except ImportError:
-    aiohttp_client = None
-    try:
-        import requests
-    except ImportError:
-        requests = None
 
 try:
     import heroku3
@@ -577,7 +569,7 @@ async def shutdown(ay):
     else:
         sys.exit()
 
-
+"""
 async def async_searcher(
     url: str,
     post: bool = False,
@@ -615,3 +607,5 @@ async def async_searcher(
     #     return data.text
     else:
         raise DependencyMissingError("install 'aiohttp' to use this.")
+  """
+        
