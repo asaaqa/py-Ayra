@@ -19,11 +19,11 @@ from Ayra import run_as_module
 
 if run_as_module:
     from Ayra.configs import Var
-
+    
 try:
-    import aiohttp
+    from aiohttp import ClientSession as aiohttp_client
 except ImportError:
-    aiohttp = None
+    aiohttp_client = None
     try:
         import requests
     except ImportError:
@@ -576,3 +576,42 @@ async def shutdown(ay):
             )
     else:
         sys.exit()
+
+
+async def async_searcher(
+    url: str,
+    post: bool = False,
+    head: bool = False,
+    headers: dict = None,
+    evaluate=None,
+    object: bool = False,
+    re_json: bool = False,
+    re_content: bool = False,
+    *args,
+    **kwargs,
+):
+    if aiohttp_client:
+        async with aiohttp_client(headers=headers) as client:
+            method = client.head if head else (client.post if post else client.get)
+            data = await method(url, *args, **kwargs)
+            if evaluate:
+                return await evaluate(data)
+            if re_json:
+                return await data.json()
+            if re_content:
+                return await data.read()
+            if head or object:
+                return data
+            return await data.text()
+    # elif requests:
+    #     method = requests.head if head else (requests.post if post else requests.get)
+    #     data = method(url, headers=headers, *args, **kwargs)
+    #     if re_json:
+    #         return data.json()
+    #     if re_content:
+    #         return data.content
+    #     if head or object:
+    #         return data
+    #     return data.text
+    else:
+        raise DependencyMissingError("install 'aiohttp' to use this.")
