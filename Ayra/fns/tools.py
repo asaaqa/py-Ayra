@@ -20,7 +20,7 @@ from traceback import format_exc
 
 from .. import *
 from ..exceptions import DependencyMissingError
-from .helper import bash, run_async
+from .helper import async_searcher, bash, run_async
 
 try:
     import certifi
@@ -69,36 +69,6 @@ async def get_ofox(codename):
         ofox_baseurl + "devices/get?codename=" + codename, re_json=True
     )
     return device, releases
-
-
-# ~~~~~~~~~~~~~~~Async Searcher~~~~~~~~~~~~~~~
-# @buddhhu
-
-
-async def async_searcher(
-    url: str,
-    post: bool = None,
-    headers: dict = None,
-    params: dict = None,
-    json: dict = None,
-    data: dict = None,
-    ssl=None,
-    re_json: bool = False,
-    re_content: bool = False,
-    real: bool = False,
-):
-    async with aiohttp.ClientSession(headers=headers) as client:
-        if post:
-            data = await client.post(url, json=json, data=data, ssl=ssl)
-        else:
-            data = await client.get(url, params=params, ssl=ssl)
-        if re_json:
-            return await data.json()
-        if re_content:
-            return await data.read()
-        if real:
-            return data
-        return await data.text()
 
 
 # ~~~~~~~~~~~~~~~JSON Parser~~~~~~~~~~~~~~~
@@ -547,24 +517,29 @@ def make_html_telegraph(title, html=""):
 
 async def Carbon(
     code,
-    base_url="https://rayso-api-desvhu-33.koyeb.app/generate",
+    base_url="https://carbonara.vercel.app/api/cook",
     file_name="ayra",
     download=False,
     rayso=False,
     **kwargs,
 ):
-    # if rayso:
-    kwargs["text"] = code
-    kwargs["theme"] = kwargs.get("theme", "meadow")
-    kwargs["darkMode"] = kwargs.get("darkMode", True)
-    kwargs["title"] = kwargs.get("title", "Ayra")
-    # else:
-    #    kwargs["code"] = code
+    if rayso:
+        base_url = "https://rayso-api-desvhu-33.koyeb.app/generate"
+        kwargs["text"] = code
+        kwargs["theme"] = kwargs.get("theme", "breeze")
+        kwargs["darkMode"] = kwargs.get("darkMode", True)
+        kwargs["title"] = kwargs.get("title", "Ayra")
+    else:
+        kwargs["code"] = code
     con = await async_searcher(base_url, post=True, json=kwargs, re_content=True)
     if not download:
         file = BytesIO(con)
         file.name = file_name + ".jpg"
     else:
+        try:
+            return json_parser(con.decode())
+        except Exception:
+            pass
         file = file_name + ".jpg"
         with open(file, "wb") as f:
             f.write(con)
