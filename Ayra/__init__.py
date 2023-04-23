@@ -96,7 +96,6 @@ if sys.argv[0] == "-m":
     INLINE_PM = udB.set_key("INLINE_PM", "True")
     PMLOG = udB.set_key("PMLOG", "True")
     PMSETTING = udB.set_key("PMSETTING", "True")
-    PMWARNS = udB.set_key("PMWARNS", "3")
 else:
     print("Ayra 2022 © senpai80")
 
