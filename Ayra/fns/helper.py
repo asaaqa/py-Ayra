@@ -20,7 +20,16 @@ from Ayra import run_as_module
 if run_as_module:
     from Ayra.configs import Var
     
-
+try:
+    import aiohttp
+except ImportError:
+    aiohttp = None
+    try:
+        import requests
+    except ImportError:
+        requests = None
+        
+        
 try:
     import heroku3
 except ImportError:
