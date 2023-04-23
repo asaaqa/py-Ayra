@@ -48,7 +48,6 @@ class Var:
     INLINE_PIC = config("INLINE_PIC", default=False, cast=bool)
     VCBOT = config("VCBOT", default=True, cast=bool)
     PMSETTING = config("PMSETTING", default=True, cast=bool)
-    PMWARNS = config("PMWARNS", "3")
     DISABLE_PMDEL = config("DISABLE_PMDEL", default=True, cast=bool)
     # for railway
     REDISPASSWORD = config("REDISPASSWORD", default=None)
