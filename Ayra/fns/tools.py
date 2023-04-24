@@ -20,6 +20,7 @@ from traceback import format_exc
 import requests
 
 from .. import *
+from . import some_random_headers
 from ..exceptions import DependencyMissingError
 from .helper import bash, run_async
 
