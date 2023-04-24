@@ -27,7 +27,7 @@ def rem_note(user, word):
         return udB.set_key("NOTE", ok)
 
 
-def rem_all_note(chat):
+def rem_all_note(user):
     ok = get_stuff()
     if ok.get(int(user)):
         ok.pop(int(user))
