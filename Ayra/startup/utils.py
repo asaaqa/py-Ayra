@@ -17,7 +17,7 @@ def load_addons(plugin_name):
         return
     from .. import HNDLR, LOGS, asst, udB, ayra_bot
     from .._misc import _supporter as xxx
-    from Ayra import fns
+    from ayra import fns
     from .._misc._assistant import asst_cmd, callback, in_pattern
     from .._misc._decorators import ayra_cmd
     from .._misc._supporter import Config, admin_cmd, sudo_cmd
@@ -61,7 +61,21 @@ def load_addons(plugin_name):
     mod.sudo_cmd = sudo_cmd
     mod.HELP = HELP.get("Addons", {})
     mod.CMD_HELP = HELP.get("Addons", {})
-    
+    modules["ub"] = xxx
+    modules["var"] = xxx
+    modules["support"] = xxx
+    modules["userbot"] = xxx
+    modules["telebot"] = xxx
+    modules["fridaybot"] = xxx
+    modules["uniborg.util"] = xxx
+    modules["telebot.utils"] = xxx
+    modules["userbot.utils"] = xxx
+    modules["userbot.events"] = xxx
+    modules["userbot.config"] = xxx
+    modules["fridaybot.utils"] = xxx
+    modules["fridaybot.Config"] = xxx
+    modules["userbot.uniborgConfig"] = xxx
+    modules["ayra.functions"] = fns
     spec.loader.exec_module(mod)
     modules[name] = mod
     doc = modules[name].__doc__.format(i=HNDLR) if modules[name].__doc__ else ""
