@@ -95,7 +95,6 @@ if sys.argv[0] == "-m":
     SUDO_HNDLR = udB.get_key("SUDO_HNDLR") or "$"
     INLINE_PM = udB.set_key("INLINE_PM", "True")
     PMLOG = udB.set_key("PMLOG", "True")
-    PMSETTING = udB.set_key("PMSETTING", "True")
 else:
     print("Ayra 2022 © senpai80")
 
