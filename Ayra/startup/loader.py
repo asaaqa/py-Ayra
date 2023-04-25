@@ -61,9 +61,10 @@ def load_other_plugins(addons=None, pmbot=None, manager=None, vcbot=None):
         Loader(path="assistant").load(
             log=False, exclude=_ast_exc, after_load=_after_load
         )
+
     if manager:
         Loader(path="assistant/manager", key="Group Manager").load()
 
     # chat via assistant
     if pmbot:
-            Loader(path="assistant/pmbot.py").load(log=False)
+        Loader(path="assistant/pmbot.py").load_single(log=False)
