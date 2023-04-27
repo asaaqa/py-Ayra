@@ -21,20 +21,16 @@ from . import append_or_update, owner_and_sudos
 OWNER = ayra_bot.full_name
 
 MSG = f"""
-**ᴀʏʀᴀ ꭙ ᴜꜱᴇʀʙᴏᴛ​**
+**sʜᴇᴀʀʟᴇᴀɴ ꭙ͢ ᴜsᴇʀʙᴏᴛ**
 ╼┅━━━━━━━━━━╍━━━━━━━━━━┅╾
 **Owner**: [{OWNER}](tg://user?id={ayra_bot.uid})
-**Support**: @KynanSupport
+**Channel**: @SherleanShop
 ╼┅━━━━━━━━━━╍━━━━━━━━━━┅╾
 """
 
 IN_BTTS = [
     [
-        Button.url(
-            "Repository",
-            url="https://github.com/naya1503/ayra",
-        ),
-        Button.url("Support", url="https://t.me/kynansupport"),
+        Button.url("Channel", url="https://t.me/SherleanShop"),
     ]
 ]
 
@@ -127,7 +123,7 @@ def in_pattern(pattern=None, owner=False, **kwargs):
                                 title="Unhandled Exception has Occured!",
                                 text=error_text(),
                                 buttons=Button.url(
-                                    "Report", "https://t.me/kynansupport"
+                                    "Report", "https://t.me/Sherlaean"
                                 ),
                             )
                         ]
