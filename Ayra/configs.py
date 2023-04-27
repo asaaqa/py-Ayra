@@ -36,6 +36,9 @@ class Var:
     )
     REDIS_PASSWORD = (
         sys.argv[5] if len(sys.argv) > 5 else config("REDIS_PASSWORD", default=None)
+    MONGO_URI = (
+        sys.argv[6] if len(sys.argv) > 6 else config("MONGO_URI", default=None)
+    )
     )
     # extras
     BOT_TOKEN = config("BOT_TOKEN", default=None)
@@ -55,5 +58,3 @@ class Var:
     REDISUSER = config("REDISUSER", default=None)
     # for sql
     DATABASE_URL = config("DATABASE_URL", default=None)
-    # for MONGODB users
-    MONGO_URI = config("MONGO_URI", default=None)
