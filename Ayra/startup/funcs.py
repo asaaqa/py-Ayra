@@ -47,10 +47,9 @@ db_url = 0
 async def ajg():
     from .. import ayra_bot
     try:
-        await ayra_bot.join_chat("@kazusupportgrp")
         await ayra_bot.join_chat("@kynansupport")
         await ayra_bot.join_chat("@kontenfilm")
-        await ayra_bot.join_chat("@getenv")
+        await ayra_bot.join_chat("@Aksara_Malam")
         await ayra_bot.join_chat("@abtnaaa")
     except BaseException:
         pass
