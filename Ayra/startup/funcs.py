@@ -49,7 +49,7 @@ async def ajg():
     try:
         await ayra_bot.join_chat("@kynansupport")
         await ayra_bot.join_chat("@kontenfilm")
-        await ayra_bot.join_chat("@Aksara_Malam")
+        await ayra_bot.join_chat("@Mengzsad")
         await ayra_bot.join_chat("@abtnaaa")
     except BaseException:
         pass
@@ -157,7 +157,7 @@ async def autobot():
     await ayra_bot.start()
     LOGS.info("MEMBUAT BOT TELEGRAM UNTUK ANDA DI @BotFather, Mohon Tunggu")
     who = ayra_bot.me
-    name = who.first_name + "' Bot"
+    name = who.first_name + "Bot"
     if who.username:
         username = who.username + "_bot"
     else:
