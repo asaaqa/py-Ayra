@@ -43,13 +43,13 @@ if run_as_module:
     from ..version import __version__ as __Ayra__
     from ..version import ayra_version
 
-    file = f"ayra{sys.argv[6]}.log" if len(sys.argv) > 6 else "ayra.log"
+    file = f"naya{sys.argv[6]}.log" if len(sys.argv) > 6 else "naya.log"
 
     if os.path.exists(file):
         os.remove(file)
 
     HOSTED_ON = where_hosted()
-    LOGS = getLogger("AyraLogs")
+    LOGS = getLogger("Naya-Userbot")
     TelethonLogger = getLogger("Telethon")
     TelethonLogger.setLevel(INFO)
 
@@ -60,7 +60,7 @@ if run_as_module:
 
         _fix_logging(FileHandler)
 
-    if HOSTED_ON == "local":
+    if HOSTED_ON == "vps":
         from ._extra import _ask_input
 
         _ask_input()
@@ -82,16 +82,16 @@ if run_as_module:
 
     LOGS.info(
         """
-                    -----------------------------------
-                            Starting Deployment
-                    -----------------------------------
+         -----------------------------------
+                Starting Deployment
+         -----------------------------------
     """
     )
 
     LOGS.info(f"Python version - {platform.python_version()}")
-    LOGS.info(f"py-Ayra Version - {__Ayra__}")
+    LOGS.info(f"Nayalibs Version - {__Ayra__}")
     LOGS.info(f"Telethon Version - {__version__} [Layer: {LAYER}]")
-    LOGS.info(f"Ayra Version - {ayra_version} [{HOSTED_ON}]")
+    LOGS.info(f"Naya-Userbot Version - {ayra_version} [{HOSTED_ON}]")
 
     try:
         from safety.tools import *
