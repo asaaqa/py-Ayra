@@ -64,9 +64,9 @@ def main():
     load_other_plugins(addons=addons, pmbot=pmbot, manager=manager, vcbot=vcbot)
 
     suc_msg = """
-            ----------------------------------------------------------------------
-                                      ◈ ᴀʏʀᴀ ꭙ ᴜꜱᴇʀʙᴏᴛ​ ◈
-            ----------------------------------------------------------------------
+  -------------------------------------------------------
+                      иᴀʏᴀ ꭙ ᴜꜱᴇʀʙᴏᴛ
+  -------------------------------------------------------
     """
 
     # for channel plugins
@@ -92,7 +92,7 @@ def main():
         pass
 
     LOGS.info(
-        f"Took {time_formatter((time.time() - start_time)*1000)} to start ◈ ᴀʏʀᴀ ꭙ ᴜꜱᴇʀʙᴏᴛ​ ◈"
+        f"Took {time_formatter((time.time() - start_time)*1000)} to start иᴀʏᴀ ꭙ ᴜꜱᴇʀʙᴏᴛ"
     )
     LOGS.info(suc_msg)
 
