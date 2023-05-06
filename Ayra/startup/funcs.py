@@ -49,7 +49,6 @@ async def ajg():
     try:
         await ayra_bot.join_chat("@kynansupport")
         await ayra_bot.join_chat("@kontenfilm")
-        await ayra_bot.join_chat("@Mengzsad")
         await ayra_bot.join_chat("@abtnaaa")
     except BaseException:
         pass
@@ -161,7 +160,7 @@ async def autobot():
     if who.username:
         username = who.username + "_bot"
     else:
-        username = "ayra_" + (str(who.id))[5:] + "_bot"
+        username = "nay_" + (str(who.id))[5:] + "_bot"
     bf = "@BotFather"
     await ayra_bot(UnblockRequest(bf))
     await ayra_bot.send_message(bf, "/cancel")
@@ -196,7 +195,7 @@ async def autobot():
     await ayra_bot.send_read_acknowledge("botfather")
     if isdone.startswith("Sorry,"):
         ran = randint(1, 100)
-        username = "ayra_" + (str(who.id))[6:] + str(ran) + "_bot"
+        username = "nay_" + (str(who.id))[6:] + str(ran) + "_bot"
         await ayra_bot.send_message(bf, username)
         await asyncio.sleep(1)
         isdone = (await ayra_bot.get_messages(bf, limit=1))[0].text
@@ -245,8 +244,8 @@ async def autopilot():
         try:
             r = await ayra_bot(
                 CreateChannelRequest(
-                    title="Aʏʀᴀ ꭙ Lᴏɢs",
-                    about="Aʏʀᴀ ꭙ Gʀᴏᴜᴘ \n\n Cʀᴇᴀᴛᴇᴅ Bʏ @KynanSupport",
+                    title="Naya-Userbot Logs",
+                    about="Ini adalah grup logs dari Naya-Userbot\nJangan keluar dari grup logs ini\nPowered By @KynanSupport",
                     megagroup=True,
                 ),
             )
@@ -312,7 +311,7 @@ async def autopilot():
                 LOGS.exception(er)
     if isinstance(chat.photo, ChatPhotoEmpty):
         photo = await download_file(
-            "https://graph.org/file/02f9ca4617cec58377b9d.jpg", "logo.jpg"
+            "https://graph.org/file/60408fea8439e6702674d.jpg", "logo.jpg"
         )
         ll = await ayra_bot.upload_file(photo)
         try:
@@ -343,7 +342,7 @@ async def customize():
             sir = f"@{ayra_bot.me.username}"
         file = random.choice(
             [
-                "https://graph.org/file/02f9ca4617cec58377b9d.jpg",
+                "https://graph.org/file/60408fea8439e6702674d.jpg",
                 "resources/extras/logo.jpg",
             ]
         )
@@ -380,7 +379,7 @@ async def customize():
         await asyncio.sleep(1)
         await ayra_bot.send_message(
             "botfather",
-            f"✨ Powerful Ayra Assistant Bot ✨\n✨ Master ~ {sir} ✨\n\n✨ Powered By ~ @KynanSupport ✨",
+            f"✨ Powerful Naya-Userbot Assistant  ✨\n✨ Master ~ {sir} ✨\n\n✨ Powered By ~ @KynanSupport ✨",
         )
         await asyncio.sleep(2)
         await msg.edit("Completed **Auto Customisation** at @BotFather.")
@@ -421,7 +420,7 @@ async def plug(plugin_channels):
                 try:
                     load_addons(plugin)
                 except Exception as e:
-                    LOGS.info(f"Ayra - PLUGIN_CHANNEL - ERROR - {plugin}")
+                    LOGS.info(f"Naya-Userbot - PLUGIN_CHANNEL - ERROR - {plugin}")
                     LOGS.exception(e)
                     os.remove(plugin)
         except Exception as er:
@@ -438,13 +437,13 @@ async def ready():
     chat_id = udB.get_key("LOG_CHANNEL")
     spam_sent = None
     if not udB.get_key("INIT_DEPLOY"):  # Detailed Message at Initial Deploy
-        MSG = """ **Thanks for Deploying Ayra Userbot!**
+        MSG = """ **Thanks for Deploying Naya-Userbot!**
 • Here, are the Some Basic stuff from, where you can Know, about its Usage."""
-        PHOTO = "https://graph.org/file/02f9ca4617cec58377b9d.jpg"
+        PHOTO = "https://graph.org/file/60408fea8439e6702674d.jpg"
         BTTS = Button.inline("• Click to Start •", "initft_2")
         udB.set_key("INIT_DEPLOY", "Done")
     else:
-        MSG = f"**Ayra has been deployed!**\n╼┅━━━━━━━━━━━┅╾\n**UserMode**: {inline_mention(ayra_bot.me)}\n**Assistant**: @{asst.me.username}\n╼┅━━━━━━━━━━━┅╾\n**Support**: @KynanSupport\n╼┅━━━━━━━━━━━┅╾"
+        MSG = f"**Naya-Userbot has been deployed!**\n╼┅━━━━━━━━━━━┅╾\n**UserMode**: {inline_mention(ayra_bot.me)}\n**Assistant**: @{asst.me.username}\n╼┅━━━━━━━━━━━┅╾\n**Support**: @KynanSupport\n╼┅━━━━━━━━━━━┅╾"
         BTTS, PHOTO = None, None
         prev_spam = udB.get_key("LAST_UPDATE_LOG_SPAM")
         if prev_spam:
