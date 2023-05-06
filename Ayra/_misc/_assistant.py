@@ -21,7 +21,7 @@ from . import append_or_update, owner_and_sudos
 OWNER = ayra_bot.full_name
 
 MSG = f"""
-**ᴀʏʀᴀ ꭙ ᴜꜱᴇʀʙᴏᴛ​**
+**иᴀʏᴀ ꭙ ᴜꜱᴇʀʙᴏᴛ**
 ╼┅━━━━━━━━━━╍━━━━━━━━━━┅╾
 **Owner**: [{OWNER}](tg://user?id={ayra_bot.uid})
 **Support**: @KynanSupport
@@ -32,7 +32,7 @@ IN_BTTS = [
     [
         Button.url(
             "Repository",
-            url="https://github.com/naya1503/ayra",
+            url="https://github.com/naya1503/Naya-Userbot",
         ),
         Button.url("Support", url="https://t.me/kynansupport"),
     ]
