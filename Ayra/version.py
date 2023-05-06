@@ -1,2 +1,2 @@
-__version__ = "8.7.1"
-ayra_version = "5.1.1"
+__version__ = "8.7.2"
+ayra_version = "5.1.2"
