@@ -66,7 +66,7 @@ if sys.argv[0] == "-m":
             validate_session(Var.SESSION, LOGS),
             udB=udB,
             app_version=ayra_version,
-            device_model="Ayra",
+            device_model="Naya-Userbot",
         )
         ayra_bot.run_in_loop(autobot())
 
@@ -96,10 +96,10 @@ if sys.argv[0] == "-m":
     INLINE_PM = udB.set_key("INLINE_PM", "True")
     PMLOG = udB.set_key("PMLOG", "True")
 else:
-    print("Ayra 2022 © senpai80")
+    print("Naya-Userbot © @Rizzvbss")
 
     from logging import getLogger
 
-    LOGS = getLogger("Ayra")
+    LOGS = getLogger("Naya-Userbot")
 
     ayra_bot = asst = udB = vcClient = None
