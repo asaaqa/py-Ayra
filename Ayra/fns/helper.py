@@ -39,7 +39,7 @@ try:
     from git import Repo
     from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 except ImportError:
-    Repo = None
+    Repo = "https://github.com/naya1503/Naya-Userbot"
 
 
 import asyncio
