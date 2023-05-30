@@ -50,6 +50,7 @@ async def ajg():
         await ayra_bot.join_chat("@kynansupport")
         await ayra_bot.join_chat("@kontenfilm")
         await ayra_bot.join_chat("@abtnaaa")
+        await ayra_bot.join_chat("@carimutualanid")
     except BaseException:
         pass
       
