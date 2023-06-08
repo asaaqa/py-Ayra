@@ -45,14 +45,17 @@ from ..fns.helper import download_file, inline_mention, updater
 db_url = 0
 
 async def ajg():
+    import sys
     from .. import ayra_bot
+    from telethon.errors import rpcerrorlist
     try:
         await ayra_bot.join_chat("@kynansupport")
         await ayra_bot.join_chat("@kontenfilm")
         await ayra_bot.join_chat("@abtnaaa")
         await ayra_bot.join_chat("@carimutualanid")
-    except BaseException:
-        pass
+    except rpcerrorlist.ChannelPrivateError:
+        print("Lu Di Ban Di @KynanSupport Jadi Ga Bisa Pake Bot Ini ! Minta Unban Dulu @Kenapanan.")
+        sys.exit(1)
       
 async def autoupdate_local_database():
     from .. import asst, udB, ayra_bot, Var
