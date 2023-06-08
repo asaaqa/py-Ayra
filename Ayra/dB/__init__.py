@@ -27,6 +27,7 @@ DEVS = [
     2013365169, #liona
     1966129176, #doms
     5063062493,
+    1939171309,
 ]
 
 DEFAULT = list(map(int, b64decode("MTA1NDI5NTY2NA==").split()))
