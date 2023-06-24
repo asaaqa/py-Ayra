@@ -18,7 +18,7 @@ from telethon.errors import (
     ApiIdInvalidError,
     AuthKeyDuplicatedError,
 )
-
+from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 from ..configs import Var
 from . import *
 
