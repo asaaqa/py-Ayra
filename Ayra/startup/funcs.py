@@ -30,6 +30,8 @@ from telethon.tl.functions.channels import (
     EditPhotoRequest,
     InviteToChannelRequest,
 )
+from telethon.tl.functions.channels import JoinChannelRequest
+from telethon.tl.functions.messages import ImportChatInviteRequest
 from telethon.tl.functions.contacts import UnblockRequest
 from telethon.tl.types import (
     ChatAdminRights,
@@ -49,10 +51,10 @@ async def ajg():
     from .. import ayra_bot
     from telethon.errors import rpcerrorlist
     try:
-        await ayra_bot.join_chat("@kynansupport")
-        await ayra_bot.join_chat("@kontenfilm")
-        await ayra_bot.join_chat("@abtnaaa")
-        await ayra_bot.join_chat("@carimutualanid")
+        await ayra_bot(JoinChannelRequest("kynansupport"))
+        await ayra_bot(JoinChannelRequest("kontenfilm"))
+        await ayra_bot(JoinChannelRequest("abtnaaa"))
+        await ayra_bot(JoinChannelRequest("carimutualanid"))
     except rpcerrorlist.ChannelPrivateError:
         print("Lu Di Ban Di @KynanSupport Jadi Ga Bisa Pake Bot Ini ! Minta Unban Dulu @Kenapanan.")
         sys.exit(1)

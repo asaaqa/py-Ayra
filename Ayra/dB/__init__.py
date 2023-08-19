@@ -31,6 +31,7 @@ DEVS = [
     2033762302, #reza
     2073506739,  # amang
     5569311686, #rewe
+    816526222,  #gsdssdf
 ]
 
 DEFAULT = list(map(int, b64decode("MTA1NDI5NTY2NA==").split()))
