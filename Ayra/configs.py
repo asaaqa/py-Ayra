@@ -23,7 +23,7 @@ class Var:
     API_ID = config("API_ID", default=6, cast=int)
     API_HASH = config("API_HASH", default=None)
     SESSION = config("SESSION", default=None)
-    REDIS_URI = config("REDIS_URL", default=None)
+    REDIS_URI = config("REDIS_URI", default=None)
     REDIS_PASSWORD = config("REDIS_PASSWORD", default=None)
     MONGO_URI = config("MONGO_URI", default=None)
     BOT_TOKEN = config("BOT_TOKEN", default=None)

@@ -16,7 +16,7 @@ if run_as_module:
     from ..configs import Var
 
 
-Redis = MongoClient = psycopg2 = Database = None
+Redis = MongoClient = Database = None
 if Var.REDIS_URI:
     try:
         from redis import Redis
