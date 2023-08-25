@@ -2,7 +2,7 @@
 
 Core library of [The Ayra](https://github.com/naya1503/Ayra), a python based telegram userbot.
 
-[![CodeFactor](https://www.codefactor.io/repository/github/naya1503/py-Ayra/badge)](https://www.codefactor.io/repository/github/naya1503/py-Ayra)
+[![CodeFactor](https://www.codefactor.io/repository/github/naya1503/Naya-Userbot/badge)](https://www.codefactor.io/repository/github/naya1503/Naya-Userbot)
 [![PyPI - Version](https://img.shields.io/pypi/v/py-Ayra?style=round)](https://pypi.org/project/py-Ayra)    
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/py-Ayra?label=DOWNLOADS&style=round)](https://pypi.org/project/py-Ayra)    
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/naya1503/Naya-Userbot/graphs/commit-activity)
