@@ -17,7 +17,7 @@ if run_as_module:
 
 
 Redis = MongoClient = psycopg2 = Database = None
-if (Var.REDIS_URI or Var.REDISHOST):
+if Var.REDIS_URI:
     try:
         from redis import Redis
     except ImportError:
@@ -31,13 +31,6 @@ elif Var.MONGO_URI:
         LOGS.info("Installing 'pymongo' for database.")
         os.system("pip3 install -q pymongo[srv]")
         from pymongo import MongoClient
-elif Var.DATABASE_URL:
-    try:
-        import psycopg2
-    except ImportError:
-        LOGS.info("Installing 'pyscopg2' for database.")
-        os.system("pip3 install -q psycopg2-binary")
-        import psycopg2
 else:
     try:
         from localdb import Database
@@ -150,96 +143,6 @@ class MongoDB(_BaseDatabase):
         return True
 
 
-# --------------------------------------------------------------------------------------------- #
-
-# Thanks to "Akash Pattnaik" / @BLUE-DEVIL1134
-# for SQL Implementation in Ayra.
-#
-# Please use https://elephantsql.com/ !
-
-
-class SqlDB(_BaseDatabase):
-    def __init__(self, url):
-        self._url = url
-        self._connection = None
-        self._cursor = None
-        try:
-            self._connection = psycopg2.connect(dsn=url)
-            self._connection.autocommit = True
-            self._cursor = self._connection.cursor()
-            self._cursor.execute(
-                "CREATE TABLE IF NOT EXISTS Ayra (ayraCli varchar(70))"
-            )
-        except Exception as error:
-            LOGS.exception(error)
-            LOGS.info("Invaid SQL Database")
-            if self._connection:
-                self._connection.close()
-            sys.exit()
-        super().__init__()
-
-    @property
-    def name(self):
-        return "SQL"
-
-    @property
-    def usage(self):
-        self._cursor.execute(
-            "SELECT pg_size_pretty(pg_relation_size('Ayra')) AS size"
-        )
-        data = self._cursor.fetchall()
-        return int(data[0][0].split()[0])
-
-    def keys(self):
-        self._cursor.execute(
-            "SELECT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name  = 'ayra'"
-        )  # case sensitive
-        data = self._cursor.fetchall()
-        return [_[0] for _ in data]
-
-    def get(self, variable):
-        try:
-            self._cursor.execute(f"SELECT {variable} FROM Ayra")
-        except psycopg2.errors.UndefinedColumn:
-            return None
-        data = self._cursor.fetchall()
-        if not data:
-            return None
-        if len(data) >= 1:
-            for i in data:
-                if i[0]:
-                    return i[0]
-
-    def set(self, key, value):
-        try:
-            self._cursor.execute(f"ALTER TABLE Ayra DROP COLUMN IF EXISTS {key}")
-        except (psycopg2.errors.UndefinedColumn, psycopg2.errors.SyntaxError):
-            pass
-        except BaseException as er:
-            LOGS.exception(er)
-        self._cache.update({key: value})
-        self._cursor.execute(f"ALTER TABLE Ayra ADD {key} TEXT")
-        self._cursor.execute(f"INSERT INTO Ayra ({key}) values (%s)", (str(value),))
-        return True
-
-    def delete(self, key):
-        try:
-            self._cursor.execute(f"ALTER TABLE Ayra DROP COLUMN {key}")
-        except psycopg2.errors.UndefinedColumn:
-            return False
-        return True
-
-    def flushall(self):
-        self._cache.clear()
-        self._cursor.execute("DROP TABLE Ayra")
-        self._cursor.execute(
-            "CREATE TABLE IF NOT EXISTS Ayra (ayraCli varchar(70))"
-        )
-        return True
-
-
-# --------------------------------------------------------------------------------------------- #
-
 
 class RedisDB(_BaseDatabase):
     def __init__(
@@ -318,9 +221,8 @@ def AyraDB():
     try:
         if Redis:
             return RedisDB(
-                host=Var.REDIS_URI or Var.REDISHOST,
-                password=Var.REDIS_PASSWORD or Var.REDISPASSWORD,
-                port=Var.REDISPORT,
+                host=Var.REDIS_URI,
+                password=Var.REDIS_PASSWORD,
                 platform=HOSTED_ON,
                 decode_responses=True,
                 socket_timeout=5,
@@ -328,8 +230,6 @@ def AyraDB():
             )
         if MongoClient:
             return MongoDB(Var.MONGO_URI)
-        if psycopg2:
-            return SqlDB(Var.DATABASE_URL)
     except BaseException as err:
         LOGS.exception(err)
         _er = True
