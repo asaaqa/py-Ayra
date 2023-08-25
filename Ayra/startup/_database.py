@@ -148,7 +148,6 @@ class RedisDB(_BaseDatabase):
     def __init__(
         self,
         host,
-        port,
         password,
         platform="",
         logger=LOGS,
@@ -164,14 +163,13 @@ class RedisDB(_BaseDatabase):
                 import sys
 
                 sys.exit()
-        elif not host or not port:
+        elif not host:
             logger.error("Port Number not found")
             import sys
 
             sys.exit()
         kwargs["host"] = host
         kwargs["password"] = password
-        kwargs["port"] = port
 
         if platform.lower() == "qovery" and not host:
             var, hash_, host, password = "", "", "", ""
