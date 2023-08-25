@@ -148,6 +148,7 @@ class RedisDB(_BaseDatabase):
     def __init__(
         self,
         host,
+        port,
         password,
         platform="",
         logger=LOGS,
@@ -163,13 +164,14 @@ class RedisDB(_BaseDatabase):
                 import sys
 
                 sys.exit()
-        elif not host:
+        elif not host or not port:
             logger.error("Port Number not found")
             import sys
 
             sys.exit()
         kwargs["host"] = host
         kwargs["password"] = password
+        kwargs["port"] = port
 
         if platform.lower() == "qovery" and not host:
             var, hash_, host, password = "", "", "", ""
@@ -179,9 +181,9 @@ class RedisDB(_BaseDatabase):
             if var:
                 hash_ = var.split("_", maxsplit=2)[1].split("_")[0]
             if hash:
-                kwargs["host"] = os.environ(f"QOVERY_REDIS_{hash_}_HOST")
-                kwargs["port"] = os.environ(f"QOVERY_REDIS_{hash_}_PORT")
-                kwargs["password"] = os.environ(f"QOVERY_REDIS_{hash_}_PASSWORD")
+                kwargs["host"] = os.environ.get(f"QOVERY_REDIS_{hash_}_HOST")
+                kwargs["port"] = os.environ.get(f"QOVERY_REDIS_{hash_}_PORT")
+                kwargs["password"] = os.environ.get(f"QOVERY_REDIS_{hash_}_PASSWORD")
         self.db = Redis(**kwargs)
         self.set = self.db.set
         self.get = self.db.get
@@ -222,6 +224,7 @@ def AyraDB():
                 host=Var.REDIS_URI,
                 password=Var.REDIS_PASSWORD,
                 platform=HOSTED_ON,
+                port=Var.REDISPORT,
                 decode_responses=True,
                 socket_timeout=5,
                 retry_on_timeout=True,

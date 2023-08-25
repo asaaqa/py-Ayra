@@ -25,6 +25,7 @@ class Var:
     SESSION = config("SESSION", default=None)
     REDIS_URI = config("REDIS_URI", default=None)
     REDIS_PASSWORD = config("REDIS_PASSWORD", default=None)
+    REDISPORT = config("REDISPORT", default=None)
     MONGO_URI = config("MONGO_URI", default=None)
     BOT_TOKEN = config("BOT_TOKEN", default=None)
     LOG_CHANNEL = config("LOG_CHANNEL", default=123, cast=int)
