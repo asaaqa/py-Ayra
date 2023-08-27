@@ -37,8 +37,8 @@ class Var:
     REDIS_PASSWORD = (
         sys.argv[5] if len(sys.argv) > 5 else config("REDIS_PASSWORD", default=None)
     )
-    MONGO_URL = (
-        sys.argv[5] if len(sys.argv) > 5 else config("MONGO_URL", default=None)
+    MONGO_URI = (
+        sys.argv[5] if len(sys.argv) > 5 else config("MONGO_URI", default=None)
     )
     REDISPORT = config("REDISPORT", default=None)
     BOT_TOKEN = config("BOT_TOKEN", default=None)
