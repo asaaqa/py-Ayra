@@ -20,11 +20,23 @@ except ImportError:
 
 class Var:
     # mandatory
-    API_ID = config("API_ID", default=6, cast=int)
-    API_HASH = config("API_HASH", default=None)
-    SESSION = config("SESSION", default=None)
-    REDIS_URI = config("REDIS_URI", default=None)
-    REDIS_PASSWORD = config("REDIS_PASSWORD", default=None)
+    API_ID = (
+        int(sys.argv[1]) if len(sys.argv) > 1 else config("API_ID", default=6, cast=int)
+    )
+    API_HASH = (
+        sys.argv[2]
+        if len(sys.argv) > 2
+        else config("API_HASH", default="eb06d4abfb49dc3eeb1aeb98ae0f581e")
+    )
+    SESSION = sys.argv[3] if len(sys.argv) > 3 else config("SESSION", default=None)
+    REDIS_URI = (
+        sys.argv[4]
+        if len(sys.argv) > 4
+        else (config("REDIS_URI", default=None) or config("REDIS_URL", default=None))
+    )
+    REDIS_PASSWORD = (
+        sys.argv[5] if len(sys.argv) > 5 else config("REDIS_PASSWORD", default=None)
+    )
     REDISPORT = config("REDISPORT", default=None)
     MONGO_URI = config("MONGO_URI", default=None)
     BOT_TOKEN = config("BOT_TOKEN", default=None)
