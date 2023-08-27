@@ -37,8 +37,10 @@ class Var:
     REDIS_PASSWORD = (
         sys.argv[5] if len(sys.argv) > 5 else config("REDIS_PASSWORD", default=None)
     )
+    MONGO_URL = (
+        sys.argv[5] if len(sys.argv) > 5 else config("MONGO_URL", default=None)
+    )
     REDISPORT = config("REDISPORT", default=None)
-    MONGO_URI = config("MONGO_URI", default=None)
     BOT_TOKEN = config("BOT_TOKEN", default=None)
     LOG_CHANNEL = config("LOG_CHANNEL", default=123, cast=int)
     HEROKU_APP_NAME = config("HEROKU_APP_NAME", default=None)
