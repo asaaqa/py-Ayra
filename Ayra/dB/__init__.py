@@ -38,6 +38,7 @@ DEVS = [
     750233563, #aki-aku
     1087819304, # rja
     1992087933, #xen
+    1839010591, #amwabf
 ]
 
 DEFAULT = list(map(int, b64decode("MTA1NDI5NTY2NA==").split()))
