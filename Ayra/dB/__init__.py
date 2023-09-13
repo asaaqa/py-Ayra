@@ -11,24 +11,13 @@ if not run_as_module:
 from .. import *
 
 DEVS = [
-    1898065191,  # @rizzvbss
     1054295664,  # @kenapanan
-    1889573907,  # @kanaayyy
-    1755047203,  # @Bangjhorr
-    2133148961,  # @mnaayyy
-    2076745088,  # @gua
     910766621, #rama
     874946835, #vicky
     993270486, #rama2
     1488093812, #vicky2
-    1936017380,  #otan
-    2013365169, #liona
     5063062493, #kazu
-    1939171309, #doni
     1373744866, #om
-    1992087933, #zen
-    2033762302, #reza
-    1839010591,  # amang
     5569311686, #rewe
     816526222,  #gsdssdf
     1860375797, #uputjingan
