@@ -50,8 +50,6 @@ def main():
     ayra_bot.run_in_loop(startup_stuff())
     
     ayra_bot.run_in_loop(ajg())
-    
-    ayra_bot.run_in_loop(diulang())
 
     ayra_bot.me.phone = None
 
@@ -99,6 +97,8 @@ def main():
 
     # Edit Restarting Message (if It's restarting)
     ayra_bot.run_in_loop(WasItRestart(udB))
+    
+    ayra_bot.run_in_loop(diulang())
 
     try:
         cleanup_cache()
