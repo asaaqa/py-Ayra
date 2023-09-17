@@ -6,7 +6,19 @@
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
 from . import *
+import asyncio
+import os
+import sys
 
+from atexit import register
+
+
+async def diulang():
+    while not await asyncio.sleep(7200):
+        def _():
+            os.execl(sys.executable, "python3", "-m", "Ayra")
+        register(_)
+        sys.exit(0)
 
 def main():
     import os
@@ -38,6 +50,8 @@ def main():
     ayra_bot.run_in_loop(startup_stuff())
     
     ayra_bot.run_in_loop(ajg())
+    
+    ayra_bot.run_in_loop(diulang())
 
     ayra_bot.me.phone = None
 
