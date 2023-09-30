@@ -11,15 +11,15 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 name = "py-Ayra"
-author = "naya1503"
-author_email = "cosmospanas70@gmail.com"
+author = "asaaqa"
+author_email = "asaaqalii2005@gmail.com"
 description = "A Secure and Powerful Python-Telethon Based Library For Ayra Userbot."
 license_ = "GNU AFFERO GENERAL PUBLIC LICENSE (v3)"
-url = "https://github.com/naya1503/pyAyra"
+url = "https://github.com/asaaqa/pyAyra"
 project_urls = {
-    "Bug Tracker": "https://github.com/naya1503/pyAyra/issues",
+    "Bug Tracker": "https://github.com/asaaqa/pyAyra/issues",
     "Documentation": "https://ultroid.tech",
-    "Source Code": "https://github.com/naya1503/pyAyra",
+    "Source Code": "https://github.com/asaaqa/pyAyra",
 }
 classifiers = [
     "Programming Language :: Python :: 3",
