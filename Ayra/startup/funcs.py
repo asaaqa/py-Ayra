@@ -376,7 +376,7 @@ async def customize():
         await ayra_bot.send_message("botfather", UL)
         await asyncio.sleep(1)
         await ayra_bot.send_message(
-            "botfather", f"✨ Hello ✨!! I'm Assistant Bot of {sir}"
+            "botfather", f"✨ مرحبا  ✨!! I'm Assistant Bot of {sir}"
         )
         await asyncio.sleep(2)
         await ayra_bot.send_message("botfather", "/setdescription")
